@@ -1,0 +1,49 @@
+//pat¼×¼¶1152 
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+const int Max=1000;
+int Judge(long long Data);
+int main()
+{
+	char Digit[Max];
+	char a[Max];
+	int K;
+	int L;
+	int i,j,k;
+	long long Data;
+	if(scanf("%d%d",&L,&K)==2&&scanf("%s",Digit)==1)
+	{
+		for(i=0;i<=L-K;i++)
+		{
+			j=i;
+			for(k=0;k<K;k++)
+			{
+				a[k]=Digit[j++];
+			}
+			a[K]='\0';
+			Data=atoll(a);
+			j=Judge(Data);
+			if(j==0)
+			{
+				printf("%lld\n",Data);
+				break;
+			}
+		}
+		if(j!=0)
+		printf("404\n");
+	}
+	return 0;
+}
+int Judge(long long Data)
+{
+	long long n;
+	int i;
+	n=(long long)sqrt((double)Data);
+	for(i=2;i<=n;i++)
+	{
+		if(Data%i==0)
+		return 1;
+	}
+	return 0;
+}
